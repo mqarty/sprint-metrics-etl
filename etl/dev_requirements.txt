@@ -1,0 +1,4 @@
+httpie
+pytest
+pytest-cov
+termcolor

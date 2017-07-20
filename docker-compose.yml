@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  db:
+    build: ./postgres
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=docker
+    ports:
+       - "5432:5432"    
+  etl:
+    build: ./etl
+    command: python -m etl.functions.run_etl
+    environment:
+      - JIRA_URI=https://clearcare.atlassian.net
+      - USERNAME=python_webhooks
+      - PASSWORD=asdfasdf
+    logging:
+      driver: json-file
+    volumes:
+      - ./etl:/code
+    depends_on:
+      - db

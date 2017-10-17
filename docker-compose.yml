@@ -13,7 +13,7 @@ services:
     build: ./etl
     command: python -m etl.functions.run_etl
     environment:
-      - JIRA_URI=https://clearcare.atlassian.net
+      - JIRA_URI=https://yourcompany.atlassian.net
       - USERNAME=python_webhooks
       - PASSWORD=asdfasdf
     logging:
